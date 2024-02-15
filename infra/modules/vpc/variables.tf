@@ -94,7 +94,7 @@ variable "default_security_group_name" {
 variable "default_security_group_egress" {
   description = "List of maps of egress rules to set on the default security group	"
   type        = list(map(string))
-  default = [
+  default     = [
     {
       cidr_blocks = "10.0.0.0/8"
       description = "rfc1918: Private Address Space"
@@ -133,7 +133,7 @@ variable "default_security_group_egress" {
 variable "default_security_group_ingress" {
   description = "List of maps of ingress rules to set on the default security group	"
   type        = list(map(string))
-  default = [
+  default     = [
     {
       cidr_blocks = "10.0.0.0/8"
       description = "rfc1918: Private Address Space"
