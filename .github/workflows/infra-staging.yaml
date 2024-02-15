@@ -1,4 +1,4 @@
-name: practicalgitops.staging.infra
+name: "lojadobill.ops"
 
 on:
   push:
