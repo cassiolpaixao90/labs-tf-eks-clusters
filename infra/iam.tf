@@ -12,7 +12,7 @@ resource "aws_iam_openid_connect_provider" "github_actions" {
 
 # Create an IAM Role that can be assumed by Actions Runners running
 # against repos in the list
-resource "aws_iam_role" "gha_oidc_assume_role" {
+resource "aws_iam_role" "github_actions_assume_role" {
   name = "github_actions_role"
 
   # Terraform's "jsonencode" function converts a
@@ -43,7 +43,7 @@ resource "aws_iam_role" "gha_oidc_assume_role" {
 # To do its thing
 resource "aws_iam_role_policy" "gha_oidc_terraform_permissions" {
   name = "gha_oidc_terraform_permissions"
-  role = aws_iam_role.gha_oidc_assume_role.id
+  role = aws_iam_role.github_actions_assume_role.id
 
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
@@ -61,5 +61,5 @@ resource "aws_iam_role_policy" "gha_oidc_terraform_permissions" {
 
 # Needed for adding to your Github Action
 output "role_arn" {
-  value = aws_iam_role.gha_oidc_assume_role.arn
+  value = aws_iam_role.github_actions_assume_role.arn
 }
